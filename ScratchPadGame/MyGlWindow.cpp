@@ -1,19 +1,5 @@
 #include "MyGlWindow.hpp"
 
-// Shaders
-static const GLchar* vertexShaderSource = "#version 330 core\n"
-"layout (location = 0) in vec3 position;\n"
-"void main()\n"
-"{\n"
-"gl_Position = vec4(position.x, position.y, position.z, 1.0);\n"
-"}\0";
-static const GLchar* fragmentShaderSource = "#version 330 core\n"
-"out vec4 color;\n"
-"void main()\n"
-"{\n"
-"color = vec4(1.0f, 1.0f, 1.0f, 1.0f);\n"
-"}\n\0";
-
 static GLfloat vertices[] = {
     +0.0f, +0.1f, 0.0f, // Left
     -0.1f, -0.1f, 0.0f, // Right
@@ -36,11 +22,35 @@ void MyGlWindow::initializeGL()
     sendDataToOpenGL();
 }
 
+QByteArray MyGlWindow::getTotal(QFile * file)
+{
+    QByteArray total;
+    QByteArray line;
+    while (!file->atEnd()) {
+        line = file->read(1024);
+        total.append(line);
+    }
+    
+    return total;
+}
+
 void MyGlWindow::initializeShader()
 {
+    QFile vertexShaderFile("resources/shaders/vertexShader.glsl");
+    QFile fragmentShaderFile("resources/shaders/fragmentShader.glsl");
+
+    assert(vertexShaderFile.open(QIODevice::ReadOnly | QIODevice::Text));
+    assert(fragmentShaderFile.open(QIODevice::ReadOnly | QIODevice::Text));
+
+    QString vertexShaderCode(getTotal(&vertexShaderFile));
+    QString fragmentShaderCode(getTotal(&fragmentShaderFile));
+
+    vertexShaderFile.close();
+    fragmentShaderFile.close();
+    
     program = new QGLShaderProgram();
-    program->addShaderFromSourceCode(QGLShader::Vertex, vertexShaderSource);
-    program->addShaderFromSourceCode(QGLShader::Fragment,fragmentShaderSource);
+    program->addShaderFromSourceCode(QGLShader::Vertex, vertexShaderCode);
+    program->addShaderFromSourceCode(QGLShader::Fragment,fragmentShaderCode);
     program->link();
     program->bind();
 }

@@ -6,6 +6,7 @@
 
 #include <QtOpenGL/qgl.h>
 #include <QtOpenGL/qglshaderprogram.h>
+#include <QtCore/qfile.h>
 
 class MyGlWindow : public QGLWidget
 {
@@ -22,6 +23,7 @@ private:
 
     void sendDataToOpenGL();
     void initializeShader();
+    QByteArray getTotal(QFile * file);
 
 };
 

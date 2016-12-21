@@ -16,17 +16,19 @@
 		185DD0DB1E0B0E760014CB12 /* MyGlWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185DD0D91E0B0E760014CB12 /* MyGlWindow.cpp */; };
 		185DD0DD1E0B10EA0014CB12 /* libGLEW.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DD0DC1E0B10EA0014CB12 /* libGLEW.2.0.0.dylib */; };
 		185DD0DF1E0B142E0014CB12 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DD0DE1E0B142E0014CB12 /* OpenGL.framework */; };
+		18E460571E0B28C600A27CA9 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18E460561E0B28BB00A27CA9 /* resources */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		185DD0581E0AC7C90014CB12 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				18E460571E0B28C600A27CA9 /* resources in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -42,6 +44,7 @@
 		185DD0DA1E0B0E760014CB12 /* MyGlWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MyGlWindow.hpp; sourceTree = "<group>"; };
 		185DD0DC1E0B10EA0014CB12 /* libGLEW.2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.0.0.dylib; path = ../../../../../usr/local/Cellar/glew/2.0.0/lib/libGLEW.2.0.0.dylib; sourceTree = "<group>"; };
 		185DD0DE1E0B142E0014CB12 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		18E460561E0B28BB00A27CA9 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,7 @@
 		185DD05C1E0AC7C90014CB12 /* ScratchPadGame */ = {
 			isa = PBXGroup;
 			children = (
+				18E460561E0B28BB00A27CA9 /* resources */,
 				185DD0D81E0B0E5F0014CB12 /* Classes */,
 				185DD05D1E0AC7C90014CB12 /* main.cpp */,
 			);
@@ -308,6 +312,7 @@
 				185DD0631E0AC7C90014CB12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
