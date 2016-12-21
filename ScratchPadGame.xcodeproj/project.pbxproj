@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		185DD05E1E0AC7C90014CB12 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185DD05D1E0AC7C90014CB12 /* main.cpp */; };
 		185DD0BF1E0AEE960014CB12 /* libBatGameEngine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DD0BE1E0AEE960014CB12 /* libBatGameEngine.dylib */; };
+		185DD0D41E0AF5140014CB12 /* QtCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DD0D01E0AF5140014CB12 /* QtCore.framework */; };
+		185DD0D51E0AF5140014CB12 /* QtGui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DD0D11E0AF5140014CB12 /* QtGui.framework */; };
+		185DD0D61E0AF5140014CB12 /* QtOpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DD0D21E0AF5140014CB12 /* QtOpenGL.framework */; };
+		185DD0D71E0AF5140014CB12 /* QtWidgets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DD0D31E0AF5140014CB12 /* QtWidgets.framework */; };
+		185DD0DB1E0B0E760014CB12 /* MyGlWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185DD0D91E0B0E760014CB12 /* MyGlWindow.cpp */; };
+		185DD0DD1E0B10EA0014CB12 /* libGLEW.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DD0DC1E0B10EA0014CB12 /* libGLEW.2.0.0.dylib */; };
+		185DD0DF1E0B142E0014CB12 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185DD0DE1E0B142E0014CB12 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,10 +33,15 @@
 /* Begin PBXFileReference section */
 		185DD05A1E0AC7C90014CB12 /* ScratchPadGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ScratchPadGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		185DD05D1E0AC7C90014CB12 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		185DD07D1E0ADEF00014CB12 /* libdynamic_engine.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libdynamic_engine.dylib; path = "../../../Library/Developer/Xcode/DerivedData/dynamic_engine-binomtuidqrobydooecfmbdhdbby/Build/Products/Debug/libdynamic_engine.dylib"; sourceTree = "<group>"; };
-		185DD07F1E0AE1E90014CB12 /* libdynamic_engine.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libdynamic_engine.dylib; path = ../../../../../usr/local/lib/libdynamic_engine.dylib; sourceTree = "<group>"; };
-		185DD0A11E0AE75F0014CB12 /* libgameEngine.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgameEngine.dylib; path = ../../../../../usr/local/lib/libgameEngine.dylib; sourceTree = "<group>"; };
 		185DD0BE1E0AEE960014CB12 /* libBatGameEngine.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libBatGameEngine.dylib; path = ../../../../../private/tmp/BatGameEngine.dst/usr/local/lib/libBatGameEngine.dylib; sourceTree = "<group>"; };
+		185DD0D01E0AF5140014CB12 /* QtCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtCore.framework; path = "../../../../../usr/local/Cellar/qt@5.5/5.5.1/lib/QtCore.framework"; sourceTree = "<group>"; };
+		185DD0D11E0AF5140014CB12 /* QtGui.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtGui.framework; path = "../../../../../usr/local/Cellar/qt@5.5/5.5.1/lib/QtGui.framework"; sourceTree = "<group>"; };
+		185DD0D21E0AF5140014CB12 /* QtOpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtOpenGL.framework; path = "../../../../../usr/local/Cellar/qt@5.5/5.5.1/lib/QtOpenGL.framework"; sourceTree = "<group>"; };
+		185DD0D31E0AF5140014CB12 /* QtWidgets.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtWidgets.framework; path = "../../../../../usr/local/Cellar/qt@5.5/5.5.1/lib/QtWidgets.framework"; sourceTree = "<group>"; };
+		185DD0D91E0B0E760014CB12 /* MyGlWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyGlWindow.cpp; sourceTree = "<group>"; };
+		185DD0DA1E0B0E760014CB12 /* MyGlWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MyGlWindow.hpp; sourceTree = "<group>"; };
+		185DD0DC1E0B10EA0014CB12 /* libGLEW.2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.0.0.dylib; path = ../../../../../usr/local/Cellar/glew/2.0.0/lib/libGLEW.2.0.0.dylib; sourceTree = "<group>"; };
+		185DD0DE1E0B142E0014CB12 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +49,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185DD0DF1E0B142E0014CB12 /* OpenGL.framework in Frameworks */,
+				185DD0DD1E0B10EA0014CB12 /* libGLEW.2.0.0.dylib in Frameworks */,
+				185DD0D41E0AF5140014CB12 /* QtCore.framework in Frameworks */,
+				185DD0D51E0AF5140014CB12 /* QtGui.framework in Frameworks */,
+				185DD0D61E0AF5140014CB12 /* QtOpenGL.framework in Frameworks */,
+				185DD0D71E0AF5140014CB12 /* QtWidgets.framework in Frameworks */,
 				185DD0BF1E0AEE960014CB12 /* libBatGameEngine.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +82,7 @@
 		185DD05C1E0AC7C90014CB12 /* ScratchPadGame */ = {
 			isa = PBXGroup;
 			children = (
+				185DD0D81E0B0E5F0014CB12 /* Classes */,
 				185DD05D1E0AC7C90014CB12 /* main.cpp */,
 			);
 			path = ScratchPadGame;
@@ -72,12 +91,24 @@
 		185DD07C1E0ADEF00014CB12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				185DD0DE1E0B142E0014CB12 /* OpenGL.framework */,
+				185DD0DC1E0B10EA0014CB12 /* libGLEW.2.0.0.dylib */,
+				185DD0D01E0AF5140014CB12 /* QtCore.framework */,
+				185DD0D11E0AF5140014CB12 /* QtGui.framework */,
+				185DD0D21E0AF5140014CB12 /* QtOpenGL.framework */,
+				185DD0D31E0AF5140014CB12 /* QtWidgets.framework */,
 				185DD0BE1E0AEE960014CB12 /* libBatGameEngine.dylib */,
-				185DD0A11E0AE75F0014CB12 /* libgameEngine.dylib */,
-				185DD07F1E0AE1E90014CB12 /* libdynamic_engine.dylib */,
-				185DD07D1E0ADEF00014CB12 /* libdynamic_engine.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		185DD0D81E0B0E5F0014CB12 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				185DD0D91E0B0E760014CB12 /* MyGlWindow.cpp */,
+				185DD0DA1E0B0E760014CB12 /* MyGlWindow.hpp */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185DD0DB1E0B0E760014CB12 /* MyGlWindow.cpp in Sources */,
 				185DD05E1E0AC7C90014CB12 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,9 +266,12 @@
 		185DD0621E0AC7C90014CB12 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "/usr/local/Cellar/qt@5.5/5.5.1/lib";
 				HEADER_SEARCH_PATHS = /usr/local/include;
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/Cellar/glew/2.0.0/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -244,9 +279,12 @@
 		185DD0631E0AC7C90014CB12 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "/usr/local/Cellar/qt@5.5/5.5.1/lib";
 				HEADER_SEARCH_PATHS = /usr/local/include;
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/Cellar/glew/2.0.0/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
