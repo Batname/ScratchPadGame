@@ -1,8 +1,7 @@
 #ifndef FileLoader_hpp
 #define FileLoader_hpp
 
-#include <QtCore/qfile.h>
-#include <cassert>
+#include "includes.h"
 
 class FileLoader
 {

@@ -3,15 +3,7 @@
 #ifndef Timer_hpp
 #define Timer_hpp
 
-#include <thread>
-#include <mutex>
-#include <condition_variable>
-#include <algorithm>
-#include <functional>
-#include <chrono>
-#include <unordered_map>
-#include <set>
-#include <cstdint>
+#include "includes.h"
 
 class Timer
 {
@@ -32,30 +24,21 @@ private:
     
     struct Instance
     {
-        Instance(timer_id id = 0)
-        : id(id)
-        , running(false)
+        Instance(timer_id id = 0) :
+            id(id), running(false)
         {
         }
         
         template<typename Tfunction>
-        Instance(timer_id id, Timestamp next, Duration period, Tfunction&& handler) noexcept
-        : id(id)
-        , next(next)
-        , period(period)
-        , handler(std::forward<Tfunction>(handler))
-        , running(false)
+        Instance(timer_id id, Timestamp next, Duration period, Tfunction&& handler) noexcept :
+            id(id), next(next), period(period) , handler(std::forward<Tfunction>(handler)), running(false)
         {
         }
         
         Instance(Instance const& r) = delete;
         
-        Instance(Instance&& r) noexcept
-        : id(r.id)
-        , next(r.next)
-        , period(r.period)
-        , handler(std::move(r.handler))
-        , running(r.running)
+        Instance(Instance&& r) noexcept:
+            id(r.id), next(r.next), period(r.period), handler(std::move(r.handler)), running(r.running)
         {
         }
         

@@ -1,6 +1,4 @@
-
-#include <BatGameEngine/BatGameEngine.hpp>
-#include <QtWidgets/qapplication.h>
+#include "includes.h"
 
 #include "MyGlWindow.hpp"
 

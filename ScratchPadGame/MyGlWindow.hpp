@@ -1,14 +1,7 @@
 #ifndef MyGlWindow_hpp
 #define MyGlWindow_hpp
 
-#include <BatGameEngine/BatGameEngine.hpp>
-#include <cassert>
-#include <thread>
-#include <functional>
-
-#include <QtOpenGL/qgl.h>
-#include <QtCore/qfile.h>
-#include <QtCore/qtimer.h>
+#include "includes.h"
 
 #include "ShaderProgram.hpp"
 #include "Timer.hpp"

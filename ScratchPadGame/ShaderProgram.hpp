@@ -1,7 +1,7 @@
 #ifndef ShaderProgram_hpp
 #define ShaderProgram_hpp
 
-#include <QtOpenGL/qglshaderprogram.h>
+#include "includes.h"
 
 #include "FileLoader.hpp"
 

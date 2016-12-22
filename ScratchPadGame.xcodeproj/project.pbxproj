@@ -54,6 +54,7 @@
 		18E4605C1E0BB60700A27CA9 /* ShaderProgram.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderProgram.hpp; sourceTree = "<group>"; };
 		18E460641E0BC2BD00A27CA9 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		18E460651E0BC2BD00A27CA9 /* Timer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timer.hpp; sourceTree = "<group>"; };
+		18E460821E0C395E00A27CA9 /* includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = includes.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +98,7 @@
 				18E4605E1E0BBA2500A27CA9 /* Source */,
 				18E460561E0B28BB00A27CA9 /* resources */,
 				185DD05D1E0AC7C90014CB12 /* main.cpp */,
+				18E460821E0C395E00A27CA9 /* includes.h */,
 			);
 			path = ScratchPadGame;
 			sourceTree = "<group>";
