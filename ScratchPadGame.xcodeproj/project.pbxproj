@@ -19,6 +19,7 @@
 		18E460571E0B28C600A27CA9 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18E460561E0B28BB00A27CA9 /* resources */; };
 		18E4605A1E0BB1C200A27CA9 /* FileLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18E460581E0BB1C200A27CA9 /* FileLoader.cpp */; };
 		18E4605D1E0BB60700A27CA9 /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18E4605B1E0BB60700A27CA9 /* ShaderProgram.cpp */; };
+		18E460661E0BC2BD00A27CA9 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18E460641E0BC2BD00A27CA9 /* Timer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,8 @@
 		18E460591E0BB1C200A27CA9 /* FileLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileLoader.hpp; sourceTree = "<group>"; };
 		18E4605B1E0BB60700A27CA9 /* ShaderProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderProgram.cpp; sourceTree = "<group>"; };
 		18E4605C1E0BB60700A27CA9 /* ShaderProgram.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderProgram.hpp; sourceTree = "<group>"; };
+		18E460641E0BC2BD00A27CA9 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
+		18E460651E0BC2BD00A27CA9 /* Timer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,8 @@
 				18E460591E0BB1C200A27CA9 /* FileLoader.hpp */,
 				18E4605B1E0BB60700A27CA9 /* ShaderProgram.cpp */,
 				18E4605C1E0BB60700A27CA9 /* ShaderProgram.hpp */,
+				18E460641E0BC2BD00A27CA9 /* Timer.cpp */,
+				18E460651E0BC2BD00A27CA9 /* Timer.hpp */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 				185DD0DB1E0B0E760014CB12 /* MyGlWindow.cpp in Sources */,
 				18E4605D1E0BB60700A27CA9 /* ShaderProgram.cpp in Sources */,
 				185DD05E1E0AC7C90014CB12 /* main.cpp in Sources */,
+				18E460661E0BC2BD00A27CA9 /* Timer.cpp in Sources */,
 				18E4605A1E0BB1C200A27CA9 /* FileLoader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

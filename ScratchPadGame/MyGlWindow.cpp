@@ -8,6 +8,17 @@ static GLfloat vertices[] = {
 
 using namespace std;
 
+MyGlWindow::MyGlWindow()
+{
+    timer = new Timer();
+}
+
+MyGlWindow::~MyGlWindow()
+{
+    delete timer;
+    delete program;
+}
+
 void MyGlWindow::initializeGL()
 {
     glewExperimental = GL_TRUE;
@@ -20,6 +31,7 @@ void MyGlWindow::initializeGL()
     
     program = new ShaderProgram("resources/shaders/vertexShader.glsl", "resources/shaders/fragmentShader.glsl");
     sendDataToOpenGL();
+
 }
 
 QByteArray MyGlWindow::getTotal(QFile * file)
@@ -47,7 +59,13 @@ void MyGlWindow::sendDataToOpenGL()
     GLint positionAttrib = program->attributeLocation("position");
     glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
     glEnableVertexAttribArray(positionAttrib);
+    
+    timer->create(0, 1, std::bind(&MyGlWindow::myUpdate, this));
+}
 
+void MyGlWindow::myUpdate()
+{
+    std::cout << "frame" << std::endl;
 }
 
 void MyGlWindow::paintGL()
