@@ -1,9 +1,11 @@
 #include "MyGlWindow.hpp"
 
-static GLfloat vertices[] = {
-    +0.0f, +0.1f, 0.0f, // Left
-    -0.1f, -0.1f, 0.0f, // Right
-    +0.1f, -0.1f, 0.0f  // Top
+using namespace Math;
+
+static Vector2D vertices[] = {
+    Vector2D(+0.0f, +0.1f), // Left
+    Vector2D(-0.1f, -0.1f), // Right
+    Vector2D(+0.1f, -0.1f), // Top
 };
 
 using namespace std;
@@ -53,11 +55,11 @@ void MyGlWindow::sendDataToOpenGL()
     
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
     
     
     GLint positionAttrib = program->attributeLocation("position");
-    glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+    glVertexAttribPointer(positionAttrib, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
     glEnableVertexAttribArray(positionAttrib);
     
     timer->create(0, 1, std::bind(&MyGlWindow::myUpdate, this));

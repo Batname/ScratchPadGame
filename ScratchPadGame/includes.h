@@ -33,6 +33,6 @@
 #include <glm/gtx/string_cast.hpp>
 
 // engine
-#include <BatGameEngine/BatGameEngine.hpp>
+#include <BatGameEngine/Vector2D.h>
 
 #endif /* includes_h */
