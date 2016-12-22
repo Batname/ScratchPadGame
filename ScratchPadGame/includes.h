@@ -27,6 +27,7 @@
 #include <QtCore/qtimer.h>
 #include <QtCore/qthread.h>
 #include <QtCore/qdebug.h>
+#include <QtCore/qdatetime.h>
 
 // glm
 #include <glm/glm.hpp>

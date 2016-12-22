@@ -11,6 +11,10 @@ namespace {
     
     const unsigned int NUM_VERTS = sizeof(vertices) / sizeof(*vertices);
     Vector2D shipPosition(0.5f, 0.5f);
+    
+    // Deltatime
+    float deltaTime = 0.0f;	// Time between current frame and last frame
+    long long int lastFrame = 0;  	// Time of last frame
 }
 
 
@@ -76,13 +80,17 @@ void MyGlWindow::sendDataToOpenGL()
 
 void MyGlWindow::myUpdate()
 {
-    Vector2D velocity(0.001f, 0.001f);
-    shipPosition = shipPosition + velocity;
+    Vector2D velocity(deltaTime / 10000, deltaTime / 10000);
+    shipPosition = (shipPosition + velocity);
     repaint();
 }
 
 void MyGlWindow::paintGL()
 {
+    long long int currentFrame = QDateTime::currentMSecsSinceEpoch();
+    deltaTime = currentFrame - lastFrame;
+    lastFrame = currentFrame;
+    
     // clear
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
