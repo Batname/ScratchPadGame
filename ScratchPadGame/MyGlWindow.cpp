@@ -73,9 +73,10 @@ void MyGlWindow::sendDataToOpenGL()
     qTimer->start(0);
 }
 
+
 void MyGlWindow::myUpdate()
 {
-    Vector2D velocity(0.01f, 0.01f);
+    Vector2D velocity(0.001f, 0.001f);
     shipPosition = shipPosition + velocity;
     repaint();
 }
