@@ -11,10 +11,6 @@ namespace {
     
     const unsigned int NUM_VERTS = sizeof(vertices) / sizeof(*vertices);
     Vector2D shipPosition(0.5f, 0.5f);
-    
-    // Deltatime
-    float deltaTime = 0.0f;	// Time between current frame and last frame
-    long long int lastFrame = 0;  	// Time of last frame
 }
 
 
@@ -23,6 +19,7 @@ using namespace std;
 MyGlWindow::MyGlWindow()
 {
     qTimer = new QTimer(this);
+    clock = new Timing::Clock;
 }
 
 
@@ -30,6 +27,7 @@ MyGlWindow::~MyGlWindow()
 {
     delete qTimer;
     delete program;
+    delete clock;
 }
 
 void MyGlWindow::initializeGL()
@@ -80,6 +78,7 @@ void MyGlWindow::sendDataToOpenGL()
 
 void MyGlWindow::myUpdate()
 {
+    float deltaTime = clock->getDeltaTime();
     Vector2D velocity(deltaTime / 10000, deltaTime / 10000);
     shipPosition = (shipPosition + velocity);
     repaint();
@@ -87,9 +86,7 @@ void MyGlWindow::myUpdate()
 
 void MyGlWindow::paintGL()
 {
-    long long int currentFrame = QDateTime::currentMSecsSinceEpoch();
-    deltaTime = currentFrame - lastFrame;
-    lastFrame = currentFrame;
+    clock->update();
     
     // clear
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);

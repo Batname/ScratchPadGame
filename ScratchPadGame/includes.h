@@ -37,5 +37,6 @@
 
 // engine
 #include <BatGameEngine/Vector2D.h>
+#include <BatGameEngine/Clock.hpp>
 
 #endif /* includes_h */

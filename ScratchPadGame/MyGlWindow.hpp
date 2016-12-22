@@ -19,6 +19,7 @@ private:
     GLuint VBO, VAO;
     GLuint shaderProgram;
     QTimer * qTimer;
+    Timing::Clock * clock;
     
     ShaderProgram * program;
 
