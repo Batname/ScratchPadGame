@@ -62,10 +62,11 @@ void MyGlWindow::sendDataToOpenGL()
     
     timer->create(0, 1, std::bind(&MyGlWindow::myUpdate, this));
 }
+int debugCount = 0;
 
 void MyGlWindow::myUpdate()
 {
-    std::cout << "frame" << std::endl;
+    std::cout << "frame" << debugCount++ << std::endl;
 }
 
 void MyGlWindow::paintGL()
