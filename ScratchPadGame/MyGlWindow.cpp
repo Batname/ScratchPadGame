@@ -10,7 +10,7 @@ namespace {
     };
     
     const unsigned int NUM_VERTS = sizeof(vertices) / sizeof(*vertices);
-    Vector2D shipPosition(0.5f, 0.5f);
+    Vector2D shipPosition(-1.0f, -1.0f);
 }
 
 
@@ -42,7 +42,7 @@ void MyGlWindow::initializeGL()
     
     program = new ShaderProgram("resources/shaders/vertexShader.glsl", "resources/shaders/fragmentShader.glsl");
     sendDataToOpenGL();
-
+    clock->run();
 }
 
 QByteArray MyGlWindow::getTotal(QFile * file)
@@ -79,8 +79,8 @@ void MyGlWindow::sendDataToOpenGL()
 void MyGlWindow::myUpdate()
 {
     float deltaTime = clock->getDeltaTime();
-    Vector2D velocity(deltaTime / 10000, deltaTime / 10000);
-    shipPosition = (shipPosition + velocity);
+    Vector2D velocity(0.05f, 0.05f);
+    shipPosition = shipPosition + velocity * deltaTime;
     repaint();
 }
 
