@@ -2,13 +2,17 @@
 
 using namespace Math;
 
-static Vector2D vertices[] = {
-    Vector2D(+0.0f, +0.1f), // Left
-    Vector2D(-0.1f, -0.1f), // Right
-    Vector2D(+0.1f, -0.1f), // Top
-};
+namespace {
+    Vector2D vertices[] = {
+        Vector2D(+0.0f, +0.1f), // Left
+        Vector2D(-0.1f, -0.1f), // Right
+        Vector2D(+0.1f, -0.1f), // Top
+    };
+    
+    const unsigned int NUM_VERTS = sizeof(vertices) / sizeof(*vertices);
+    Vector2D shipPosition(0.5f, 0.5f);
+}
 
-static const unsigned int NUM_VERTS = sizeof(vertices) / sizeof(*vertices);
 
 using namespace std;
 
@@ -64,6 +68,7 @@ void MyGlWindow::sendDataToOpenGL()
     glVertexAttribPointer(positionAttrib, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
     glEnableVertexAttribArray(positionAttrib);
     
+    // delay::nanoseconds
     timer->create(0, 1, std::bind(&MyGlWindow::myUpdate, this));
 }
 int debugCount = 0;
@@ -79,7 +84,6 @@ void MyGlWindow::paintGL()
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    Vector2D shipPosition(0.5f, 0.5f);
     Vector2D translatedVerts[NUM_VERTS];
     
     for (unsigned int i = 0; i < NUM_VERTS; i++) {

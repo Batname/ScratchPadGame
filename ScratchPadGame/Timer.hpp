@@ -20,7 +20,7 @@ private:
 private:
     typedef std::chrono::steady_clock Clock;
     typedef std::chrono::time_point<Clock> Timestamp;
-    typedef std::chrono::nanoseconds Duration;
+    typedef std::chrono::microseconds Duration;
     
     struct Instance
     {
