@@ -1,11 +1,3 @@
-//
-//  Timer.cpp
-//  ScratchPadGame
-//
-//  Created by apple on 2016-12-22.
-//  Copyright © 2016 apple. All rights reserved.
-//
-
 #include "Timer.hpp"
 
 void Timer::threadStart()
@@ -42,9 +34,6 @@ void Timer::threadStart()
                 }
                 else if (!instance.running)
                 {
-                    // Running was set to false, destroy was called
-                    // for this Instance while the callback was in progress
-                    // (this thread was not holding the lock during the callback)
                     active.erase(instance.id);
                 }
                 else
@@ -68,10 +57,8 @@ void Timer::threadStart()
     }
 }
 
-Timer::Timer()
-: nextId(1)
-, queue(comparator)
-, done(false)
+Timer::Timer():
+    nextId(1), queue(comparator), done(false)
 {
     ScopedLock lock(sync);
     worker = std::thread(std::bind(&Timer::threadStart, this));
@@ -120,8 +107,6 @@ bool Timer::destroy(timer_id id)
         return false;
     else if (i->second.running)
     {
-        // A callback is in progress for this Instance,
-        // so flag it for deletion in the worker
         i->second.running = false;
     }
     else
