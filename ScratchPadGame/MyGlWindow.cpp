@@ -8,6 +8,8 @@ static Vector2D vertices[] = {
     Vector2D(+0.1f, -0.1f), // Top
 };
 
+static const unsigned int NUM_VERTS = sizeof(vertices) / sizeof(*vertices);
+
 using namespace std;
 
 MyGlWindow::MyGlWindow()
@@ -55,7 +57,7 @@ void MyGlWindow::sendDataToOpenGL()
     
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), nullptr, GL_DYNAMIC_DRAW);
     
     
     GLint positionAttrib = program->attributeLocation("position");
@@ -76,6 +78,15 @@ void MyGlWindow::paintGL()
     // clear
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    Vector2D shipPosition(0.5f, 0.5f);
+    Vector2D translatedVerts[NUM_VERTS];
+    
+    for (unsigned int i = 0; i < NUM_VERTS; i++) {
+        translatedVerts[i] = vertices[i] + shipPosition;
+    }
+    
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(translatedVerts), translatedVerts);
     
     glDrawArrays(GL_TRIANGLES, 0, 3);
 }
