@@ -18,12 +18,13 @@ using namespace std;
 
 MyGlWindow::MyGlWindow()
 {
-    timer = new Timer();
+    qTimer = new QTimer(this);
 }
+
 
 MyGlWindow::~MyGlWindow()
 {
-    delete timer;
+    delete qTimer;
     delete program;
 }
 
@@ -68,14 +69,15 @@ void MyGlWindow::sendDataToOpenGL()
     glVertexAttribPointer(positionAttrib, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
     glEnableVertexAttribArray(positionAttrib);
     
-    // delay::nanoseconds
-    timer->create(0, 1, std::bind(&MyGlWindow::myUpdate, this));
+    connect(qTimer, SIGNAL(timeout()), this, SLOT(myUpdate()));
+    qTimer->start(0);
 }
-int debugCount = 0;
 
 void MyGlWindow::myUpdate()
 {
-    std::cout << "frame" << debugCount++ << std::endl;
+    Vector2D velocity(0.01f, 0.01f);
+    shipPosition = shipPosition + velocity;
+    repaint();
 }
 
 void MyGlWindow::paintGL()
@@ -94,3 +96,7 @@ void MyGlWindow::paintGL()
     
     glDrawArrays(GL_TRIANGLES, 0, 3);
 }
+
+// aoutogenerated
+#include "MyGlWindow_moc.h"
+// /usr/local/Cellar/qt@5.5/5.5.1/bin/moc ~/Project/openGL/ScratchPadGame/ScratchPadGame/MyGlWindow.hpp

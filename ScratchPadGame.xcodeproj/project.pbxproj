@@ -55,6 +55,7 @@
 		18E460641E0BC2BD00A27CA9 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		18E460651E0BC2BD00A27CA9 /* Timer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Timer.hpp; sourceTree = "<group>"; };
 		18E460821E0C395E00A27CA9 /* includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = includes.h; sourceTree = "<group>"; };
+		18E460831E0C4EA400A27CA9 /* MyGlWindow_moc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGlWindow_moc.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +145,7 @@
 			children = (
 				185DD0D91E0B0E760014CB12 /* MyGlWindow.cpp */,
 				185DD0DA1E0B0E760014CB12 /* MyGlWindow.hpp */,
+				18E460831E0C4EA400A27CA9 /* MyGlWindow_moc.h */,
 			);
 			name = OpenGL;
 			sourceTree = "<group>";

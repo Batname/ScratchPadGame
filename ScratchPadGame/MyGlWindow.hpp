@@ -4,10 +4,10 @@
 #include "includes.h"
 
 #include "ShaderProgram.hpp"
-#include "Timer.hpp"
 
 class MyGlWindow : public QGLWidget
 {
+    Q_OBJECT
 public:
     MyGlWindow();
     ~MyGlWindow();
@@ -18,13 +18,14 @@ protected:
 private:
     GLuint VBO, VAO;
     GLuint shaderProgram;
-    Timer * timer;
+    QTimer * qTimer;
     
     ShaderProgram * program;
 
     void sendDataToOpenGL();
     QByteArray getTotal(QFile * file);
     
+public slots:
     void myUpdate();
 
 };

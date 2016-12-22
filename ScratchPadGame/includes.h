@@ -25,6 +25,7 @@
 #include <QtCore/qfile.h>
 #include <QtCore/qfile.h>
 #include <QtCore/qtimer.h>
+#include <QtCore/qthread.h>
 
 // glm
 #include <glm/glm.hpp>
