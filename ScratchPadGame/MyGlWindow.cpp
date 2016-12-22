@@ -18,7 +18,7 @@ void MyGlWindow::initializeGL()
     // openGl options
     glEnable(GL_DEPTH_TEST);
     
-    initializeShader();
+    program = new ShaderProgram("resources/shaders/vertexShader.glsl", "resources/shaders/fragmentShader.glsl");
     sendDataToOpenGL();
 }
 
@@ -32,27 +32,6 @@ QByteArray MyGlWindow::getTotal(QFile * file)
     }
     
     return total;
-}
-
-void MyGlWindow::initializeShader()
-{
-    QFile vertexShaderFile("resources/shaders/vertexShader.glsl");
-    QFile fragmentShaderFile("resources/shaders/fragmentShader.glsl");
-
-    assert(vertexShaderFile.open(QIODevice::ReadOnly | QIODevice::Text));
-    assert(fragmentShaderFile.open(QIODevice::ReadOnly | QIODevice::Text));
-
-    QString vertexShaderCode(getTotal(&vertexShaderFile));
-    QString fragmentShaderCode(getTotal(&fragmentShaderFile));
-
-    vertexShaderFile.close();
-    fragmentShaderFile.close();
-    
-    program = new QGLShaderProgram();
-    program->addShaderFromSourceCode(QGLShader::Vertex, vertexShaderCode);
-    program->addShaderFromSourceCode(QGLShader::Fragment,fragmentShaderCode);
-    program->link();
-    program->bind();
 }
 
 void MyGlWindow::sendDataToOpenGL()

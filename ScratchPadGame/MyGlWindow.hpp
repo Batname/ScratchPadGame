@@ -5,8 +5,9 @@
 #include <cassert>
 
 #include <QtOpenGL/qgl.h>
-#include <QtOpenGL/qglshaderprogram.h>
 #include <QtCore/qfile.h>
+
+#include "ShaderProgram.hpp"
 
 class MyGlWindow : public QGLWidget
 {
@@ -19,10 +20,9 @@ private:
     GLuint VBO, VAO;
     GLuint shaderProgram;
     
-    QGLShaderProgram * program;
+    ShaderProgram * program;
 
     void sendDataToOpenGL();
-    void initializeShader();
     QByteArray getTotal(QFile * file);
 
 };
