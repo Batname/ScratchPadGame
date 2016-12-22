@@ -10,7 +10,7 @@ namespace {
     };
     
     const unsigned int NUM_VERTS = sizeof(vertices) / sizeof(*vertices);
-    Vector2D shipPosition(-1.0f, -1.0f);
+    Vector2D shipPosition;
 }
 
 
@@ -80,9 +80,9 @@ void MyGlWindow::myUpdate()
 {
     clock->update();
 
-    float deltaTime = clock->getDeltaTime();
-    Vector2D velocity(0.05f, 0.05f);
-    shipPosition = shipPosition + velocity * deltaTime;
+//    float deltaTime = clock->getDeltaTime();
+//    Vector2D velocity(0.05f, 0.05f);
+//    shipPosition = shipPosition + velocity * deltaTime;
     repaint();
 }
 
@@ -101,6 +101,23 @@ void MyGlWindow::paintGL()
     glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(translatedVerts), translatedVerts);
     
     glDrawArrays(GL_TRIANGLES, 0, 3);
+}
+
+void MyGlWindow::keyPressEvent(QKeyEvent * e)
+{
+    float speed = 0.02f;
+    if (e->key() == Qt::Key_Up) {
+        shipPosition.y += speed;
+    }
+    if (e->key() == Qt::Key_Down) {
+        shipPosition.y -= speed;
+    }
+    if (e->key() == Qt::Key_Right) {
+        shipPosition.x += speed;
+    }
+    if (e->key() == Qt::Key_Left) {
+        shipPosition.x -= speed;
+    }
 }
 
 // aoutogenerated

@@ -15,6 +15,7 @@ public:
 protected:
     void initializeGL();
     void paintGL();
+    void keyPressEvent(QKeyEvent *);
 private:
     GLuint VBO, VAO;
     GLuint shaderProgram;
