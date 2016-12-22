@@ -7,7 +7,7 @@
 class FileLoader
 {
 public:
-    explicit FileLoader(char * filePath);
+    explicit FileLoader(const char * filePath);
     ~FileLoader();
     
     QString getString();

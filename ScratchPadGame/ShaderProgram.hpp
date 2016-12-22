@@ -8,7 +8,7 @@
 class ShaderProgram : public QGLShaderProgram
 {
 public:
-    ShaderProgram(char * vertexShaderPath, char * fragmentShaderPath);
+    ShaderProgram(const char * vertexShaderPath, const char * fragmentShaderPath);
 protected:
 private:
 

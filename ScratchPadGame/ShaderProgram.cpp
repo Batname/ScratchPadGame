@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-ShaderProgram::ShaderProgram(char * vertexShaderPath, char * fragmentShaderPath)
+ShaderProgram::ShaderProgram(const char * vertexShaderPath, const char * fragmentShaderPath)
 {
     FileLoader vertexShaderFile(vertexShaderPath);
     FileLoader fragmentShaderFile(fragmentShaderPath);

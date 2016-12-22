@@ -1,7 +1,7 @@
 
 #include "FileLoader.hpp"
 
-FileLoader::FileLoader(char * filePath)
+FileLoader::FileLoader(const char * filePath)
 {
     file = new QFile(filePath);
     
