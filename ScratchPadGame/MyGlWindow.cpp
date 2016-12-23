@@ -20,6 +20,7 @@ MyGlWindow::MyGlWindow()
 {
     qTimer = new QTimer(this);
     clock = new Timing::Clock;
+    installEventFilter(this);
 }
 
 
@@ -79,11 +80,29 @@ void MyGlWindow::sendDataToOpenGL()
 void MyGlWindow::myUpdate()
 {
     clock->update();
+    doMovement();
 
 //    float deltaTime = clock->getDeltaTime();
 //    Vector2D velocity(0.05f, 0.05f);
 //    shipPosition = shipPosition + velocity * deltaTime;
     repaint();
+}
+
+void MyGlWindow::doMovement()
+{
+    float speed = 0.02f;
+    if (pressedKeys.contains(Qt::Key_Up)) {
+        shipPosition.y += speed;
+    }
+    if (pressedKeys.contains(Qt::Key_Down)) {
+        shipPosition.y -= speed;
+    }
+    if (pressedKeys.contains(Qt::Key_Right)) {
+        shipPosition.x += speed;
+    }
+    if (pressedKeys.contains(Qt::Key_Left)) {
+        shipPosition.x -= speed;
+    }
 }
 
 void MyGlWindow::paintGL()
@@ -103,22 +122,16 @@ void MyGlWindow::paintGL()
     glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
-void MyGlWindow::keyPressEvent(QKeyEvent * e)
+bool MyGlWindow::eventFilter(QObject * obj, QEvent * event)
 {
-    float speed = 0.02f;
-    if (e->key() == Qt::Key_Up) {
-        shipPosition.y += speed;
+    if (event->type() == QEvent::KeyPress) {
+        pressedKeys += ((QKeyEvent*)event)->key();
+    } else if (event->type() == QEvent::KeyRelease) {
+        pressedKeys -= ((QKeyEvent*)event)->key();
     }
-    if (e->key() == Qt::Key_Down) {
-        shipPosition.y -= speed;
-    }
-    if (e->key() == Qt::Key_Right) {
-        shipPosition.x += speed;
-    }
-    if (e->key() == Qt::Key_Left) {
-        shipPosition.x -= speed;
-    }
+    return false;
 }
+
 
 // aoutogenerated
 #include "MyGlWindow_moc.h"

@@ -15,7 +15,7 @@ public:
 protected:
     void initializeGL();
     void paintGL();
-    void keyPressEvent(QKeyEvent *);
+    bool eventFilter(QObject * obj, QEvent * event);
 private:
     GLuint VBO, VAO;
     GLuint shaderProgram;
@@ -23,12 +23,17 @@ private:
     Timing::Clock * clock;
     
     ShaderProgram * program;
+    
+    QSet<int> pressedKeys;
 
     void sendDataToOpenGL();
     QByteArray getTotal(QFile * file);
     
+    void doMovement();
+    
 public slots:
     void myUpdate();
+    void checkKeyState();
 
 };
 

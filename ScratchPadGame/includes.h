@@ -29,6 +29,7 @@
 #include <QtCore/qdebug.h>
 #include <QtCore/qdatetime.h>
 #include <QtGui/qevent.h>
+#include <QtCore/qset.h>
 
 // glm
 #include <glm/glm.hpp>
