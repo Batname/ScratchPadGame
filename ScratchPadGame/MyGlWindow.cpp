@@ -11,6 +11,7 @@ namespace {
     
     const unsigned int NUM_VERTS = sizeof(vertices) / sizeof(*vertices);
     Vector2D shipPosition;
+    Vector2D shipVelosity;
 }
 
 
@@ -80,7 +81,8 @@ void MyGlWindow::sendDataToOpenGL()
 void MyGlWindow::myUpdate()
 {
     clock->update();
-    doMovement();
+    updateVelocity();
+    shipPosition = shipPosition + shipVelosity * clock->getDeltaTime();
 
 //    float deltaTime = clock->getDeltaTime();
 //    Vector2D velocity(0.05f, 0.05f);
@@ -88,25 +90,27 @@ void MyGlWindow::myUpdate()
     repaint();
 }
 
-void MyGlWindow::doMovement()
+void MyGlWindow::updateVelocity()
 {
-    float speed = 0.02f;
+    float accelaration = 0.2f * clock->getDeltaTime();
     if (pressedKeys.contains(Qt::Key_Up)) {
-        shipPosition.y += speed;
+        shipVelosity.y += accelaration;
     }
     if (pressedKeys.contains(Qt::Key_Down)) {
-        shipPosition.y -= speed;
+        shipVelosity.y -= accelaration;
     }
     if (pressedKeys.contains(Qt::Key_Right)) {
-        shipPosition.x += speed;
+        shipVelosity.x += accelaration;
     }
     if (pressedKeys.contains(Qt::Key_Left)) {
-        shipPosition.x -= speed;
+        shipVelosity.x -= accelaration;
     }
 }
 
 void MyGlWindow::paintGL()
 {
+    // glViewport(0, 0, width(), height());
+
     // clear
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

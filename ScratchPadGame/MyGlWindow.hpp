@@ -29,7 +29,7 @@ private:
     void sendDataToOpenGL();
     QByteArray getTotal(QFile * file);
     
-    void doMovement();
+    void updateVelocity();
     
 public slots:
     void myUpdate();
