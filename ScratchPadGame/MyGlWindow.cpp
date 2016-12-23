@@ -82,7 +82,7 @@ void MyGlWindow::myUpdate()
 {
     clock->update();
     updateVelocity();
-    shipPosition = shipPosition + shipVelosity * clock->getDeltaTime();
+    shipPosition += shipVelosity * clock->getDeltaTime();
 
 //    float deltaTime = clock->getDeltaTime();
 //    Vector2D velocity(0.05f, 0.05f);
