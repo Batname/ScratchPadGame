@@ -90,6 +90,18 @@ void MyGlWindow::myUpdate()
     repaint();
 }
 
+void MyGlWindow::brake(float * velocity, float accelaration)
+{
+    const float brakeAccelaration = 4.0f;
+    if (*velocity < 0.1f && *velocity > -0.1f) {
+        *velocity = 0.0f;
+    } else if (*velocity < 0) {
+        *velocity += accelaration * brakeAccelaration;
+    } else if (*velocity > 0) {
+        *velocity -= accelaration * brakeAccelaration;
+    }
+}
+
 void MyGlWindow::updateVelocity()
 {
     float accelaration = 0.2f * clock->getDeltaTime();
@@ -104,6 +116,10 @@ void MyGlWindow::updateVelocity()
     }
     if (pressedKeys.contains(Qt::Key_Left)) {
         shipVelosity.x -= accelaration;
+    }
+    if (pressedKeys.contains(Qt::Key::Key_Space)) {
+        brake(&shipVelosity.x, accelaration);
+        brake(&shipVelosity.y  , accelaration);
     }
 }
 
