@@ -4,7 +4,7 @@ using namespace Math;
 
 namespace {
     Vector2D vertices[] = {
-        Vector2D(+0.0f, +0.1f), // Left
+        Vector2D(+0.0f, sqrtf(0.01f + 0.01f)), // Left
         Vector2D(-0.1f, -0.1f), // Right
         Vector2D(+0.1f, -0.1f), // Top
     };
@@ -123,23 +123,21 @@ void MyGlWindow::rotateShip()
 
 void MyGlWindow::updateVelocity()
 {
-//    float accelaration = 0.2f * clock->getDeltaTime();
-//    if (pressedKeys.contains(Qt::Key_Up)) {
-//        shipVelosity.y += accelaration;
-//    }
-//    if (pressedKeys.contains(Qt::Key_Down)) {
-//        shipVelosity.y -= accelaration;
-//    }
-//    if (pressedKeys.contains(Qt::Key_Right)) {
-//        shipVelosity.x += accelaration;
-//    }
-//    if (pressedKeys.contains(Qt::Key_Left)) {
-//        shipVelosity.x -= accelaration;
-//    }
-//    if (pressedKeys.contains(Qt::Key::Key_Space)) {
-//        brake(&shipVelosity.x, accelaration);
-//        brake(&shipVelosity.y  , accelaration);
-//    }
+    float accelaration = 0.2f * clock->getDeltaTime();
+    
+    Vector2D straightUpForMyShip(0, 1);
+    Matrix2D op = Matrix2D::rotate(shipOrientation);
+    //    Vector2D directionToAccelerate(-sinf(shipOrientation), cos(shipOrientation));
+    Vector2D directionToAccelerate = op * straightUpForMyShip;
+    
+    if (pressedKeys.contains(Qt::Key_Up)) {
+        shipVelosity += directionToAccelerate * accelaration;
+    }
+
+    if (pressedKeys.contains(Qt::Key::Key_Space)) {
+        brake(&shipVelosity.x, accelaration);
+        brake(&shipVelosity.y  , accelaration);
+    }
 }
 
 void MyGlWindow::paintGL()
@@ -152,7 +150,7 @@ void MyGlWindow::paintGL()
     Vector2D transformedVerts[NUM_VERTS];
     Matrix2D op = Matrix2D::rotate(shipOrientation);
     for (unsigned int i = 0; i < NUM_VERTS; i++) {
-        transformedVerts[i] = op * vertices[i];
+        transformedVerts[i] = shipPosition + (op * vertices[i]);
     }
     
     glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(transformedVerts), transformedVerts);
