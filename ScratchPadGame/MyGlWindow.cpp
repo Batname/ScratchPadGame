@@ -12,6 +12,7 @@ namespace {
     const unsigned int NUM_VERTS = sizeof(vertices) / sizeof(*vertices);
     Vector2D shipPosition;
     Vector2D shipVelosity;
+    float shipOrientation = 0.0f;
 }
 
 
@@ -38,6 +39,12 @@ void MyGlWindow::initializeGL()
     if (glewInit() != GLEW_OK) {
         cout << "Failed to inin glew with experemental"  << endl;
     }
+    
+    int minSize = min(width(), height());
+    Vector2D viewPortLoacation;
+    viewPortLoacation.x = width() / 2 - minSize / 2;
+    viewPortLoacation.y = height() / 2 - minSize / 2;
+    glViewport(viewPortLoacation.x, viewPortLoacation.y, minSize, minSize);
     
     // openGl options
     glEnable(GL_DEPTH_TEST);
@@ -81,6 +88,7 @@ void MyGlWindow::sendDataToOpenGL()
 void MyGlWindow::myUpdate()
 {
     clock->update();
+    rotateShip();
     updateVelocity();
     shipPosition += shipVelosity * clock->getDeltaTime();
 
@@ -102,42 +110,52 @@ void MyGlWindow::brake(float * velocity, float accelaration)
     }
 }
 
-void MyGlWindow::updateVelocity()
+void MyGlWindow::rotateShip()
 {
-    float accelaration = 0.2f * clock->getDeltaTime();
-    if (pressedKeys.contains(Qt::Key_Up)) {
-        shipVelosity.y += accelaration;
-    }
-    if (pressedKeys.contains(Qt::Key_Down)) {
-        shipVelosity.y -= accelaration;
-    }
+    const float ANGULAR_MOVEMENT = 0.1f;
     if (pressedKeys.contains(Qt::Key_Right)) {
-        shipVelosity.x += accelaration;
+        shipOrientation -= ANGULAR_MOVEMENT;
     }
     if (pressedKeys.contains(Qt::Key_Left)) {
-        shipVelosity.x -= accelaration;
+       shipOrientation += ANGULAR_MOVEMENT;
     }
-    if (pressedKeys.contains(Qt::Key::Key_Space)) {
-        brake(&shipVelosity.x, accelaration);
-        brake(&shipVelosity.y  , accelaration);
-    }
+}
+
+void MyGlWindow::updateVelocity()
+{
+//    float accelaration = 0.2f * clock->getDeltaTime();
+//    if (pressedKeys.contains(Qt::Key_Up)) {
+//        shipVelosity.y += accelaration;
+//    }
+//    if (pressedKeys.contains(Qt::Key_Down)) {
+//        shipVelosity.y -= accelaration;
+//    }
+//    if (pressedKeys.contains(Qt::Key_Right)) {
+//        shipVelosity.x += accelaration;
+//    }
+//    if (pressedKeys.contains(Qt::Key_Left)) {
+//        shipVelosity.x -= accelaration;
+//    }
+//    if (pressedKeys.contains(Qt::Key::Key_Space)) {
+//        brake(&shipVelosity.x, accelaration);
+//        brake(&shipVelosity.y  , accelaration);
+//    }
 }
 
 void MyGlWindow::paintGL()
 {
-    // glViewport(0, 0, width(), height());
 
     // clear
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    Vector2D translatedVerts[NUM_VERTS];
-    
+    Vector2D transformedVerts[NUM_VERTS];
+    Matrix2D op = Matrix2D::rotate(shipOrientation);
     for (unsigned int i = 0; i < NUM_VERTS; i++) {
-        translatedVerts[i] = vertices[i] + shipPosition;
+        transformedVerts[i] = op * vertices[i];
     }
     
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(translatedVerts), translatedVerts);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(transformedVerts), transformedVerts);
     
     glDrawArrays(GL_TRIANGLES, 0, 3);
 }

@@ -14,6 +14,9 @@
 #include <cstdint>
 #include <cassert>
 
+// c lib
+#include <math.h>
+
 // GLEW
 #define GLEW_STATIC
 #include <GL/glew.h>
@@ -39,6 +42,7 @@
 
 // engine
 #include <BatGameEngine/Vector2D.h>
+#include <BatGameEngine/Matrix2D.h>
 #include <BatGameEngine/Clock.hpp>
 
 #endif /* includes_h */

@@ -30,6 +30,7 @@ private:
     QByteArray getTotal(QFile * file);
     
     void updateVelocity();
+    void rotateShip();
     void brake(float * velocity, float accelaration);
     
 public slots:
