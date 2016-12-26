@@ -43,6 +43,8 @@
 // engine
 #include <BatGameEngine/Vector2D.h>
 #include <BatGameEngine/Matrix2D.h>
+#include <BatGameEngine/Vector3D.h>
+#include <BatGameEngine/Matrix3D.h>
 #include <BatGameEngine/Clock.hpp>
 
 #endif /* includes_h */

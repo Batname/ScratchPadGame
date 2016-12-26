@@ -3,15 +3,15 @@
 using namespace Math;
 
 namespace {
-    Vector2D vertices[] = {
-        Vector2D(+0.0f, sqrtf(0.01f + 0.01f)), // Left
-        Vector2D(-0.1f, -0.1f), // Right
-        Vector2D(+0.1f, -0.1f), // Top
+    Vector3D vertices[] = {
+        Vector3D(+0.0f, sqrtf(0.01f + 0.01f), 1.0f), // Left
+        Vector3D(-0.1f, -0.1f, 1.0f), // Right
+        Vector3D(+0.1f, -0.1f, 1.0f), // Top
     };
     
     const unsigned int NUM_VERTS = sizeof(vertices) / sizeof(*vertices);
-    Vector2D shipPosition;
-    Vector2D shipVelosity;
+    Vector3D shipPosition;
+    Vector3D shipVelosity;
     float shipOrientation = 0.0f;
 }
 
@@ -41,7 +41,7 @@ void MyGlWindow::initializeGL()
     }
     
     int minSize = min(width(), height());
-    Vector2D viewPortLoacation;
+    Vector3D viewPortLoacation;
     viewPortLoacation.x = width() / 2 - minSize / 2;
     viewPortLoacation.y = height() / 2 - minSize / 2;
     glViewport(viewPortLoacation.x, viewPortLoacation.y, minSize, minSize);
@@ -77,7 +77,7 @@ void MyGlWindow::sendDataToOpenGL()
     
     
     GLint positionAttrib = program->attributeLocation("position");
-    glVertexAttribPointer(positionAttrib, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (GLvoid*)0);
+    glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
     glEnableVertexAttribArray(positionAttrib);
     
     connect(qTimer, SIGNAL(timeout()), this, SLOT(myUpdate()));
@@ -92,9 +92,6 @@ void MyGlWindow::myUpdate()
     updateVelocity();
     shipPosition += shipVelosity * clock->getDeltaTime();
 
-//    float deltaTime = clock->getDeltaTime();
-//    Vector2D velocity(0.05f, 0.05f);
-//    shipPosition = shipPosition + velocity * deltaTime;
     repaint();
 }
 
@@ -125,10 +122,9 @@ void MyGlWindow::updateVelocity()
 {
     float accelaration = 0.2f * clock->getDeltaTime();
     
-    Vector2D straightUpForMyShip(0, 1);
-    Matrix2D op = Matrix2D::rotate(shipOrientation);
-    //    Vector2D directionToAccelerate(-sinf(shipOrientation), cos(shipOrientation));
-    Vector2D directionToAccelerate = op * straightUpForMyShip;
+    Vector3D straightUpForMyShip(0, 1, 0);
+    Matrix3D op = Matrix3D::rotateZ(shipOrientation);
+    Vector3D directionToAccelerate = op * straightUpForMyShip;
     
     if (pressedKeys.contains(Qt::Key_Up)) {
         shipVelosity += directionToAccelerate * accelaration;
@@ -147,10 +143,14 @@ void MyGlWindow::paintGL()
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    Vector2D transformedVerts[NUM_VERTS];
-    Matrix2D op = Matrix2D::rotate(shipOrientation);
+    Vector3D transformedVerts[NUM_VERTS];
+    
+    Matrix3D translator = Matrix3D::translate(shipPosition);
+    Matrix3D rotator = Matrix3D::rotateZ(shipOrientation);
+    Matrix3D op = translator * rotator;
+
     for (unsigned int i = 0; i < NUM_VERTS; i++) {
-        transformedVerts[i] = shipPosition + (op * vertices[i]);
+        transformedVerts[i] = op * vertices[i];
     }
     
     glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(transformedVerts), transformedVerts);
